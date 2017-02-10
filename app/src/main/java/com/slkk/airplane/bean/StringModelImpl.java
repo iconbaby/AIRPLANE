@@ -7,7 +7,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.slkk.airplane.app.VollySingleton;
-import com.slkk.airplane.interfaze.OnStringListenter;
+import com.slkk.airplane.interfaze.OnStringListener;
+
 
 /**
  * Created by skll on 2017/2/9.
@@ -20,7 +21,7 @@ public class StringModelImpl {
         this.context = context;
     }
 
-    public void load(String url, final OnStringListenter listenter) {
+    public void load(String url, final OnStringListener listenter) {
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
