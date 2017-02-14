@@ -1,8 +1,9 @@
 package com.slkk.airplane.homepage;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,14 @@ import android.view.ViewGroup;
 import com.slkk.airplane.bean.DoubanMomentNews;
 
 import java.util.ArrayList;
+import java.util.zip.DeflaterOutputStream;
 
 /**
  * Created by skll on 2017/2/9.
  */
 
 public class DoubanFragment extends Fragment implements DoubanContact.View {
-
+    private DoubanContact.Presenter presenter;
     public DoubanFragment() {
     }
 
@@ -61,8 +63,10 @@ public class DoubanFragment extends Fragment implements DoubanContact.View {
     }
 
     @Override
-    public void setPresenter(ZhihuDailyContract.Presenter presenter) {
-
+    public void setPresenter(DoubanContact.Presenter presenter) {
+        if (presenter != null) {
+            this.presenter = presenter;
+        }
     }
 
     @Override

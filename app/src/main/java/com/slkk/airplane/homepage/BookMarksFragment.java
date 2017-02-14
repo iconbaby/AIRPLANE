@@ -12,6 +12,10 @@ import android.view.ViewGroup;
  */
 
 public class BookMarksFragment extends Fragment {
+    public BookMarksFragment(){}
+    public static BookMarksFragment newInstance(){
+        return new BookMarksFragment();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

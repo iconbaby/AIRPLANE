@@ -14,6 +14,8 @@ import android.view.View;
 
 import com.slkk.airplane.R;
 
+import javax.xml.parsers.SAXParser;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private MainFragment mainFragment;
     private BookMarksFragment bookMarksFragment;
@@ -25,6 +27,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
+        if (savedInstanceState != null) {
+            mainFragment = (MainFragment) getSupportFragmentManager().getFragment(savedInstanceState, "MainFragment");
+            bookMarksFragment = (BookMarksFragment) getSupportFragmentManager().getFragment(savedInstanceState, "BookmarksFragment");
+        } else {
+            mainFragment = MainFragment.newInstance();
+            bookMarksFragment = BookMarksFragment.newInstance();
+        }
 
         if (!mainFragment.isAdded()) {
             getSupportFragmentManager().beginTransaction().add(R.id.layout_fragment, mainFragment).commit();

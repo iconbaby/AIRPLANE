@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public interface DoubanContact  {
 
-    interface View extends BaseView<ZhihuDailyContract.Presenter> {
+    interface View extends BaseView<DoubanContact.Presenter> {
         //显示加载或其他类型的错误
         void showError();
         //显示正在加载

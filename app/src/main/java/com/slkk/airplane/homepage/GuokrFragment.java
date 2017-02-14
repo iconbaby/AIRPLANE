@@ -1,8 +1,9 @@
 package com.slkk.airplane.homepage;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
  */
 
 public class GuokrFragment extends Fragment implements GuokrContract.View{
+    private GuokrContract.Presenter presenter;
+
     public GuokrFragment (){}
     public static GuokrFragment newInstance(){
         return new GuokrFragment();
@@ -57,8 +60,10 @@ public class GuokrFragment extends Fragment implements GuokrContract.View{
     }
 
     @Override
-    public void setPresenter(ZhihuDailyContract.Presenter presenter) {
-
+    public void setPresenter(GuokrContract.Presenter presenter) {
+        if (presenter != null) {
+            this.presenter = presenter;
+        }
     }
 
     @Override
