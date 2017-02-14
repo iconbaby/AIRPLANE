@@ -9,12 +9,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 
 import com.slkk.airplane.R;
 import com.slkk.airplane.adapter.MainPagerAdapter;
+
+import java.util.Random;
 
 /**
  * Created by skll on 2017/2/10.
@@ -65,7 +70,9 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         initViews(view);
+
         setHasOptionsMenu(true);
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -101,5 +108,51 @@ public class MainFragment extends Fragment {
 
         viewPager.setAdapter(mainPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_feel_lucky) {
+            feelLucky();
+        }
+        return true;
+    }
+
+    private void feelLucky() {
+        Random random = new Random();
+        int type = random.nextInt(3);
+        switch (type) {
+            case 0:
+                zhihuDailyPresenter.feelLcuky();
+                break;
+            case 1:
+                guokrPresenter.feelLcuky();
+                break;
+            default:
+                doubanPresenter.feelLcuky();
+                break;
+        }
+    }
+
+    public MainPagerAdapter getAdapter() {
+        return mainPagerAdapter;
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        FragmentManager manager = getChildFragmentManager();
+        manager.putFragment(outState, "zhihu", zhihuDailyFragment);
+        manager.putFragment(outState, "guokr", guokrFragment);
+        manager.putFragment(outState, "douban", doubanFragment);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main, menu);
     }
 }
