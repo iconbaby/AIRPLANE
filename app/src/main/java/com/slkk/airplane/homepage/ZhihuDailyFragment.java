@@ -161,7 +161,7 @@ public class ZhihuDailyFragment extends Fragment implements ZhihuDailyContract.V
     @Override
     public void showResults(ArrayList<ZhihuDailyNews.Question> list) {
         if (adapter == null) {
-            adapter = new ZhihuDailyNewsAdapter();
+            adapter = new ZhihuDailyNewsAdapter(getContext(), list);
             adapter.setItemClickListener(new OnRecyclerViewOnClickListener() {
                 @Override
                 public void OnItemClick(View v, int position) {
