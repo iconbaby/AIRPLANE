@@ -6,4 +6,6 @@
     <string name="feel_lucky">随便看看</string>
     <string name="open_drawer_toggle" >打开drawer</string>
     <string name="close_drawer_toggle" >关闭drawer</string>
+    <string name="load_error">加载失败</string>
+    <string name="laod_retry" >重试</string>
 </resources>
